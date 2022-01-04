@@ -25,6 +25,7 @@ class ServiceProviderAdminForm(forms.ModelForm):
         exclude = ('dt_created', 'dt_updated', 'resulting_config', 'metadata_expiration_dt')
         widgets = {
             '_encrypt_saml_responses': forms.Select(choices=boolean_form_select_choices),
+            '_disable_idp_initiated_login_in_response_to': forms.Select(choices=boolean_form_select_choices),
             '_sign_response': forms.Select(choices=boolean_form_select_choices),
             '_sign_assertion': forms.Select(choices=boolean_form_select_choices),
         }

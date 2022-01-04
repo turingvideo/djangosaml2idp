@@ -19,7 +19,7 @@ class ServiceProviderAdmin(admin.ModelAdmin):
             'fields': ('metadata_expiration_dt', 'remote_metadata_url', 'local_metadata')
         }),
         ('Configuration', {
-            'fields': ('active', '_processor', '_attribute_mapping', '_nameid_field', '_sign_response', '_sign_assertion', '_signing_algorithm', '_digest_algorithm', '_encrypt_saml_responses'),
+            'fields': ('active', '_processor', '_attribute_mapping', '_nameid_field', '_sign_response', '_sign_assertion', '_signing_algorithm', '_digest_algorithm', '_encrypt_saml_responses', '_disable_idp_initiated_login_in_response_to'),
         }),
         ('Resulting config', {
             'fields': ('dt_created', 'dt_updated', 'resulting_config')

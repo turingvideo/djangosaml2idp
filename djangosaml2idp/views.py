@@ -304,6 +304,9 @@ class SSOInitView(LoginRequiredMixin, IdPHandlerViewMixin, View):
         passed_data['destination'] = destination
         passed_data['in_response_to'] = "IdP_Initiated_Login"
 
+        if service_provider.disable_idp_initiated_login_in_response_to:
+            passed_data['in_response_to'] = ''
+
         # Construct SamlResponse messages
         authn_resp = build_authn_response(request.user, get_authn(), passed_data, service_provider)
 

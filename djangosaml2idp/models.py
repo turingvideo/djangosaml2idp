@@ -157,6 +157,8 @@ class ServiceProvider(models.Model):
 
     _encrypt_saml_responses = models.BooleanField(verbose_name='Encrypt SAML Response', null=True, help_text='If not set, default to settings.SAML_ENCRYPT_AUTHN_RESPONSE. If that one is not set, default to False.')
 
+    _disable_idp_initiated_login_in_response_to = models.BooleanField(verbose_name='Disable IdP_Initiated_Login in response to', null=True, help_text='If not set, default to False.')
+
     class Meta:
         verbose_name = "Service Provider"
         verbose_name_plural = "Service Providers"
@@ -243,6 +245,10 @@ class ServiceProvider(models.Model):
         if self._encrypt_saml_responses is None:
             return getattr(settings, 'SAML_ENCRYPT_AUTHN_RESPONSE', False)
         return self._encrypt_saml_responses
+
+    @property
+    def disable_idp_initiated_login_in_response_to(self) -> bool:
+        return self._disable_idp_initiated_login_in_response_to
 
     @property
     def signing_algorithm(self) -> str:
